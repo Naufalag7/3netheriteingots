@@ -1,5 +1,4 @@
 package main
-
 import "fmt"
 
 const NMAX int = 1000
@@ -163,7 +162,7 @@ func deleteRecipe(recipes *recipeList, n *int) {
 	}
 }
 
-// SORTTING AND DISPLAY
+//Sorting and Display
 func displayRecipes(recipes *recipeList, n int) {
 	var i, choice int
 	if n == 0 {
@@ -194,7 +193,7 @@ func displayRecipes(recipes *recipeList, n int) {
 }
 
 func SortbyNameAscending(recipes *recipeList, n int) {
-	//use selection sort
+	//Selection sort
 	var i, j, minIdx int
 	for i = 0; i < n-1; i++ {
 		minIdx = i
@@ -210,7 +209,7 @@ func SortbyNameAscending(recipes *recipeList, n int) {
 }
 
 func SortbyTimeAscending(recipes *recipeList, n int) {
-	// notes, use insertion sort
+	//Insertion sort
 	var i, j int
 	for i = 1; i < n; i++ {
 		key := recipes[i]
