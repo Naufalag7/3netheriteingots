@@ -193,7 +193,7 @@ func displayRecipes(recipes *recipeList, n int) {
 }
 
 func SortbyNameAscending(recipes *recipeList, n int) {
-	//Selection sort
+	//Selection Sort
 	var i, j, minIdx int
 	for i = 0; i < n-1; i++ {
 		minIdx = i
@@ -209,7 +209,7 @@ func SortbyNameAscending(recipes *recipeList, n int) {
 }
 
 func SortbyTimeAscending(recipes *recipeList, n int) {
-	//Insertion sort
+	//Insertion Sort
 	var i, j int
 	for i = 1; i < n; i++ {
 		key := recipes[i]
