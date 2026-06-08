@@ -39,7 +39,7 @@ func main() {
 		case 3:
 			deleteRecipe(&recipes, &amount)
 		case 4:
-			searchRecipe(&recipes, amount)
+			searchByRecipe(&recipes, amount)
 		case 5:
 			displayRecipes(&recipes, amount)
 		case 6:
@@ -220,7 +220,7 @@ func SortbyTimeAscending(recipes *recipeList, n int) {
 	}
 }
 
-func searchRecipe(recipes *recipeList, n int) {
+func searchByRecipe(recipes *recipeList, n int) {
 	var ingredient string
 	var i, j int
 	fmt.Print("Enter ingredient to search for: ")
