@@ -1,4 +1,7 @@
+//By the program name, it is mainly used to test the program workability
+
 package main
+
 import "fmt"
 
 const NMAX int = 1000
@@ -6,13 +9,12 @@ const NMAX int = 1000
 type Recipe struct {
 	name             string
 	category         string
-	ingredients      [99]string
+	ingredients      [100]string
 	steps            string
 	countIngredients int
 	cookingTime      int
 	searchCount      int
 }
-
 type recipeList [NMAX]Recipe
 
 func main() {
@@ -20,7 +22,7 @@ func main() {
 	var choice, amount int
 
 	for {
-		fmt.Println("Culinary Recipe Management and Search Application (MyRecipe)")
+		fmt.Println("Culinary Recipe Management and Search Application (MyRecipe)") //Please improve this specific line and make it more obvious to look at
 		fmt.Println("1. Add recipe")
 		fmt.Println("2. Edit recipe")
 		fmt.Println("3. Delete recipe")
@@ -43,7 +45,7 @@ func main() {
 		case 5:
 			displayRecipes(&recipes, amount)
 		case 6:
-			viewStatistics(&recipes, amount)
+			viewStatistics(recipes, amount)
 		case 7:
 			fmt.Println("Exiting the application. Goodbye! 😘😘😘")
 			return
@@ -58,6 +60,7 @@ func addRecipe(recipes *recipeList, n *int) {
 		fmt.Println("Recipe list is full. Cannot add more recipes.")
 		return
 	}
+	//Please improve UI addRecipe function and reduce the repetitive word of "Enter"
 	fmt.Print("Enter recipe name: ")
 	fmt.Scan(&recipes[*n].name)
 	fmt.Print("Enter category: ")
@@ -81,7 +84,7 @@ func addRecipe(recipes *recipeList, n *int) {
 func editRecipe(recipes *recipeList, n int) {
 	var title string
 	var choice, ingredientNumber int
-	
+
 	displayRecipes(recipes, n)
 	fmt.Print("Enter the name of the recipe to edit: ")
 	fmt.Scan(&title)
@@ -92,7 +95,7 @@ func editRecipe(recipes *recipeList, n int) {
 	}
 
 	for {
-		fmt.Println("Edit recipe: ", recipes[index].name)
+		fmt.Println("Edit recipe:", recipes[index].name)
 		fmt.Println("1. Change title")
 		fmt.Println("2. Change ingredient")
 		fmt.Println("3. Change cooking time")
@@ -160,7 +163,8 @@ func deleteRecipe(recipes *recipeList, n *int) {
 	}
 }
 
-//Sorting and Display
+/*Procedure to display the recipes that are listed in
+the array aswell as sorting (Ascending/Descending) */
 func displayRecipes(recipes *recipeList, n int) {
 	var i, choice int
 	if n == 0 {
@@ -192,6 +196,7 @@ func displayRecipes(recipes *recipeList, n int) {
 
 func SortbyNameAscending(recipes *recipeList, n int) {
 	//Selection Sort
+	//Please make the Descending one aswell
 	var i, j, minIdx int
 	for i = 0; i < n-1; i++ {
 		minIdx = i
@@ -208,6 +213,7 @@ func SortbyNameAscending(recipes *recipeList, n int) {
 
 func SortbyTimeAscending(recipes *recipeList, n int) {
 	//Insertion Sort
+	//Please make the Descending one aswell
 	var i, j int
 	for i = 1; i < n; i++ {
 		temp := recipes[i]
@@ -222,7 +228,8 @@ func SortbyTimeAscending(recipes *recipeList, n int) {
 
 func searchByRecipe(recipes *recipeList, n int) {
 	var ingredient string
-	var i, j int
+	var i, j, found int
+
 	fmt.Print("Enter ingredient to search for: ")
 	fmt.Scan(&ingredient)
 
@@ -237,13 +244,14 @@ func searchByRecipe(recipes *recipeList, n int) {
 			}
 		}
 	}
-	if found = 0 {
+	if found == 0 {
 		fmt.Println("Ingredient not found in any recipe.")
 	}
 }
 
+/* Procedure to find where the
+index is located on the array */
 func findIndexRecipe(recipes *recipeList, n int, title string) int {
-	// Function to find where the index is located
 	var find int = -1
 	for i := 0; i < n; i++ {
 		if recipes[i].name == title {
@@ -253,11 +261,29 @@ func findIndexRecipe(recipes *recipeList, n int, title string) int {
 	return find
 }
 
-func viewStatistics(recipes *recipeList, n int) {
+/* Procedure mainly to display the statistics of
+recipes per ingredient category and a list of
+the most frequently searched menus */
+func viewStatistics(recipes recipeList, n int) {
+	var i, maxIdx int
+
+	if n == 0 {
+		fmt.Println("No recipe data available yet")
+		return
+	}
+
+	maxIdx = 0
+	for i = 1; i < n; i++ {
+		if recipes[i].searchCount > recipes[maxIdx].searchCount {
+			maxIdx = i
+		}
+	}
 }
 
+/* Procedure to print all the details
+of the recipe that are listed/added */
 func printRecipeDetails(recipe Recipe) {
-	// Print all the details of the recipe
+
 	fmt.Println()
 	fmt.Printf("Recipe: %s\n", recipe.name)
 	fmt.Printf("Category: %s\n", recipe.category)
