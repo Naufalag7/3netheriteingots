@@ -104,6 +104,7 @@ func editRecipe(recipes *recipeList, n int) {
 	fmt.Println("=======================================")
 	fmt.Print("\nEnter the name of the recipe to edit: ")
 	fmt.Scan(&title)
+	SortbyNameAscending(recipes, n)
 	index := findIndexRecipe(recipes, n, title)
 	if index == -1 {
 		fmt.Println("\n[Recipe not found.]")
@@ -153,7 +154,10 @@ func editRecipe(recipes *recipeList, n int) {
 			fmt.Println("Cooking time updated.")
 		case 4:
 			fmt.Print("Enter new cooking steps: ")
-			fmt.Scan(&recipes[index].steps)
+			for i = 0; i < recipes[index].countSteps; i++ {
+				fmt.Printf("Step %d: ", i+1)
+				fmt.Scan(&recipes[index].steps[i])
+			}
 			fmt.Println("Cooking steps updated.")
 		case 5:
 			fmt.Println("Finished editing recipe.")
@@ -176,6 +180,7 @@ func deleteRecipe(recipes *recipeList, n *int) {
 	fmt.Println("=======================================")
 	fmt.Print("\nEnter title to delete: ")
 	fmt.Scan(&title)
+	SortbyNameAscending(recipes, *n)
 	index := findIndexRecipe(recipes, *n, title)
 
 	if index != -1 {
@@ -333,15 +338,23 @@ func searchByRecipe(recipes *recipeList, n int) {
 }
 
 /* Procedure to find where the
-index is located on the array */
+index is located on the array , use binary search*/
 func findIndexRecipe(recipes *recipeList, n int, title string) int {
-	var find int = -1
-	for i := 0; i < n; i++ {
-		if recipes[i].name == title {
-			find = i
+	var left, right, mid, idx int
+	left = 0
+	right = n - 1
+	idx = -1
+	for left <= right && idx == -1 {
+		mid = left + (right-left)/2
+		if recipes[mid].name == title {
+			idx = mid
+		} else if recipes[mid].name < title {
+			left = mid + 1
+		} else {
+			right = mid - 1
 		}
 	}
-	return find
+	return idx
 }
 
 /* Procedure mainly to display the statistics of
