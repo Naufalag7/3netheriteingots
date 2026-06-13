@@ -64,7 +64,7 @@ ResepKu helps users manage and search cooking recipes based on available ingredi
 
 * **Statistics Dashboard**
 
-  * Recipe count by category
+  * Number of recipes per ingredient
   * Most searched recipe leaderboard
 
 ---
@@ -86,8 +86,7 @@ ResepKu helps users manage and search cooking recipes based on available ingredi
 ## Project Structure
 
 ```text
-resepku-golang-app/
-├── main.go
+├── myrecipe.go
 │   ├── Data Structures
 │   ├── CRUD Operations
 │   ├── Search Algorithms
