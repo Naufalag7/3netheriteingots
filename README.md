@@ -6,7 +6,7 @@ A console-based recipe management application built with Go that demonstrates fu
 
 This project was developed collaboratively by both team members, with responsibilities distributed across different components of the application.
 
-### Naufal Abdurrahman Gumelar
+### Naufal Abdurrahman Gumelar (103012540018)
 
 **Responsibilities:**
 
@@ -16,7 +16,7 @@ This project was developed collaboratively by both team members, with responsibi
 * Updated and enhanced overall program logic
 * Contributed to feature improvements and algorithm integration
 
-### Achmad Ramadhanu Putra Abdi
+### Achmad Ramadhanu Putra Abdi (103012540021)
 
 **Responsibilities:**
 
