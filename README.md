@@ -69,22 +69,6 @@ ResepKu helps users manage and search cooking recipes based on available ingredi
 
 ---
 
-## Getting Started
-
-### Requirements
-
-* Go 1.20 or later
-
-### Run the Application
-
-```bash
-git clone https://github.com/yourusername/resepku-golang-app.git
-
-cd resepku-golang-app
-
-go run main.go
-```
-
 ### Main Menu
 
 ```text
